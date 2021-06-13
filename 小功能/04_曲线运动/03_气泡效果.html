@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: pink;
+      }
+      canvas {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas width="400px" height="400px"></canvas>
+    <script>
+      window.onload = function () {
+        var oc = document.querySelector("canvas");
+        if (oc.getContext) {
+          var ctx = oc.getContext("2d");
+
+          // 保存圆的信息
+          var arr = [];
+          setInterval(function () {
+            console.log(arr);
+            var x = Math.random() * oc.width;
+            var y = Math.random() * oc.height;
+            var r = 10;
+            var red = Math.random() * 255;
+            var green = Math.random() * 255;
+            var blue = Math.random() * 255;
+            var alpa = 1;
+            arr.push({ x, y, r, red, green, blue, alpa });
+          }, 100);
+
+          // 每60ms检测一次，
+          setInterval(function () {
+            //   清除上一次的画布
+            ctx.clearRect(0, 0, oc.width, oc.height);
+
+            // 增大圆的半径，改变圆的透明度
+            for (let i = 0; i < arr.length; i++) {
+              // 如果元素的透明度小于0，则直接删掉该元素
+              if (arr[i].alpa <= 0) {
+                arr.splice(i, 1);
+              }
+              arr[i].r++;
+              arr[i].alpa -= 0.01;
+            }
+
+            //   将数组中的圆绘制到画布上
+            arr.forEach((item) => {
+              // 画圆
+              ctx.save();
+              ctx.fillStyle = `rgba(${item.red}, ${item.green}, ${item.blue}, ${item.alpa})`;
+              ctx.beginPath();
+              ctx.arc(item.x, item.y, item.r, 0, (360 * Math.PI) / 180);
+              ctx.fill();
+              ctx.restore();
+            });
+          }, 1000 / 60);
+        }
+      };
+    </script>
+  </body>
+</html>

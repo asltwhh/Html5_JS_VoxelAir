@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: pink;
+      }
+      canvas {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas width="400px" height="400px"></canvas>
+    <script>
+      window.onload = function () {
+        var oc = document.querySelector("canvas");
+        if (oc.getContext) {
+          var ctx = oc.getContext("2d");
+
+          var flag = 0;
+          setInterval(function () {
+            //   清除画布
+            ctx.clearRect(0, 0, oc.width, oc.height);
+
+            flag++;
+            if (flag === oc.height) {
+              flag = 0;
+            }
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.strokeRect(flag, flag, 100, 100);
+            ctx.restore();
+          }, 1000 / 60);
+        }
+      };
+    </script>
+  </body>
+</html>

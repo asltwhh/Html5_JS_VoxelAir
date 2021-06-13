@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #inner2 {
+        border: 10px solid purple;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        background-color: #bfa;
+        top: 100px;
+        left: 100px;
+      }
+      #inner1 {
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+      #wrap {
+        border: 50px solid pink;
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body id="body">
+    body
+    <div id="wrap">
+      wrap
+      <div id="inner1">
+        inner1
+        <div id="inner2">inner2</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    window.onload = function () {
+      // parentNode是直接父亲，与开不开启定位没有关系
+      const inner2 = document.querySelector("#inner2");
+      console.log(inner2.offsetParent);
+      console.log(inner2.offsetTop);
+      console.log(getPointAb(inner2));
+      function getPointAb(node) {
+        let x = 0,
+          y = 0;
+        while (node) {
+          x += node.offsetLeft;
+          y += node.offsetTop;
+          node = node.offsetParent;
+        }
+        return { x, y };
+      }
+    };
+  </script>
+</html>

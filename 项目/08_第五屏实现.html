@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <section id="wrap">
+      <!-- 流体布局 -->
+      <header id="head">
+        <!-- 固定布局 -->
+        <div class="headMain">
+          <!-- 搜索引擎会扒这个logo -->
+          <h1 class="logo">
+            <a href="">
+              <img src="./img/logo.png" alt="logo" />
+            </a>
+          </h1>
+          <!-- 导航栏 -->
+          <nav class="nav">
+            <!-- 内部的li均浮动了，所以需要添加clearfix,避免高度塌陷 -->
+            <ul class="list clearfix">
+              <li>
+                <a href="javascript:;">
+                  <div class="up">
+                    <img src="./img/home_gruen.png" alt="" />
+                  </div>
+                  <div class="down"><img src="./img/home.png" alt="" /></div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <div class="up">Course</div>
+                  <div class="down">Course</div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <div class="up">Works</div>
+                  <div class="down">Works</div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <div class="up">About</div>
+                  <div class="down">About</div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <div class="up">Team</div>
+                  <div class="down">Team</div>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- 箭头 -->
+          <div class="arrow"></div>
+        </div>
+      </header>
+      <!-- 内容区布局 -->
+      <section id="content">
+        <ul class="list">
+          <li class="home">
+            <section>
+              <ul class="home1">
+                <li class="commonTitle active leftShow">
+                  <div class="item">First Layer</div>
+                </li>
+                <li class="commonTitle rightHide">
+                  <div class="item">Second Layer</div>
+                </li>
+                <li class="commonTitle"><div class="item">Third Layer</div></li>
+                <li class="commonTitle">
+                  <div class="item">Fourth Layer</div>
+                </li>
+              </ul>
+              <ul class="home2">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </section>
+          </li>
+          <li class="course">
+            <section>
+              <header class="course1 commonTitle">
+                <span>EINIGE </span><br />
+                <span>UNSERER</span><br />
+                <span>KUNDEN</span><br />
+              </header>
+              <div class="course2 commonText">
+                <p>
+                  Das Kundenvertrauen in unsere Kompetenz ist die notwendige
+                  Basis einer erfolgreichen Zusammenarbeit, gleichzeitig aber
+                  auch das größte Lob, das man uns entgegenbringen kann. Diese
+                  und viele weitere große und kleine Kunden vertrauen uns seit
+                  Jahren, was uns stolz macht, und dafür sagen wir an dieser
+                  Stelle einfach mal.
+                </p>
+              </div>
+              <div class="course3">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+                <div class="item">
+                  <div class="backface"></div>
+                  <div class="face">lalalalal</div>
+                </div>
+                <div class="item">
+                  <div class="backface"></div>
+                  <div class="face">lalalalal</div>
+                </div>
+                <div class="item">
+                  <div class="backface"></div>
+                  <div class="face">lalalalal</div>
+                </div>
+                <div class="item">
+                  <div class="backface"></div>
+                  <div class="face">lalalalal</div>
+                </div>
+                <div class="item">
+                  <div class="backface"></div>
+                  <div class="face">lalalalal</div>
+                </div>
+                <div class="item">
+                  <div class="backface"></div>
+                  <div class="face">lalalalal</div>
+                </div>
+                <div class="item">
+                  <div class="backface"></div>
+                  <div class="face">lalalalal</div>
+                </div>
+                <div class="item">
+                  <div class="backface"></div>
+                  <div class="face">lalalalal</div>
+                </div>
+                <div class="item">
+                  <div class="backface"></div>
+                  <div class="face">lalalalal</div>
+                </div>
+                <div class="item">
+                  <div class="backface"></div>
+                  <div class="face">lalalalal</div>
+                </div>
+                <div class="item">
+                  <div class="backface"></div>
+                  <div class="face">lalalalal</div>
+                </div>
+                <div class="item">
+                  <div class="backface"></div>
+                  <div class="face">lalalalal</div>
+                </div>
+              </div>
+            </section>
+          </li>
+          <li class="works">
+            <section>
+              <header class="works1 commonTitle">
+                <span>EINBLICK</span><br />
+                <span>ERKENNTNIS</span><br />
+                <span>ERGEBNIS</span><br />
+              </header>
+              <div class="works2">
+                <div class="item">
+                  <img src="img/worksimg1.jpg" alt="" />
+                  <div class="mask">
+                    <span>我有一只小花猫</span>
+                    <div class="icon"></div>
+                  </div>
+                </div>
+                <div class="item">
+                  <img src="img/worksimg2.jpg" alt="" />
+                  <div class="mask">
+                    <span>我有一只小花狗</span>
+                    <div class="icon"></div>
+                  </div>
+                </div>
+                <div class="item">
+                  <img src="img/worksimg3.jpg" alt="" />
+                  <div class="mask">
+                    <span>我有一只小花猪</span>
+                    <div class="icon"></div>
+                  </div>
+                </div>
+                <div class="item">
+                  <img src="img/worksimg4.jpg" alt="" />
+                  <div class="mask">
+                    <span>我有一只小花驴</span>
+                    <div class="icon"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="works3"></div>
+            </section>
+          </li>
+          <li class="about">
+            <section>
+              <div class="about1 commonTitle">
+                <span>DIE </span><br />
+                <span>SPEZIELLE</span><br />
+                <span>VIELFALT</span><br />
+              </div>
+
+              <div class="about2">
+                <p class="commonText">
+                  Der bunte Medienmix ist die Faszination die uns antreibt und
+                  das, was man an uns schätzt. Von A bis Z und von vorne bis
+                  hinten nehmen wir Ihr Projekt unter unsere Fittiche und lassen
+                  es zu etwas Großartigem heranwachsen.
+                </p>
+              </div>
+              <div class="about3">
+                <div class="item">
+                  <span></span>
+                  <ul data-src="img/about1.jpg"></ul>
+                </div>
+                <div class="item">
+                  <span></span>
+                  <ul data-src="img/about3.jpg"></ul>
+                </div>
+              </div>
+              <div class="about4"></div>
+            </section>
+          </li>
+          <li class="team">
+            <section>
+              <div class="team1 commonTitle">
+                <span>WIR SIND </span> <br />
+                <span>VOXELAIR</span><br />
+              </div>
+              <div class="team2">
+                <p class="commonText">
+                  Wir sind seit 2002 eine Full-Service-Werbeagentur mit
+                  Stammsitz in Heimsheim, zwischen Stuttgart und Karlsruhe.
+                </p>
+                <p class="commonText">
+                  Über 60 Jahre Erfahrung vereinen das gesamte VoxelAir-Team.
+                  Dabei hat jedes Voxel neben professionellem Allroundwissen
+                  auch sein ganz spezielles Gebiet, um selbst die
+                  individuellsten Kundenwünsche schnell und kompetent
+                  umzusetzen.
+                </p>
+              </div>
+              <div class="team3">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </div>
+            </section>
+          </li>
+        </ul>
+        <ul class="dot">
+          <li class="active"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </section>
+    </section>
+    <script type="text/javascript">
+      window.onload = function () {
+        // 获取dom元素
+        var arrowEle = document.querySelector("#head>.headMain>.arrow");
+        var liNodes = document.querySelectorAll(
+          "#head>.headMain>.nav>.list>li"
+        );
+        var upNodes = document.querySelectorAll(
+          "#head>.headMain>.nav>.list>li .up"
+        );
+        var firstLiNode = liNodes[0];
+        var firstUpNode = firstLiNode.querySelector(".up");
+
+        let head = document.querySelector("#head");
+        let content = document.querySelector("#content");
+        let cliNodes = document.querySelectorAll("#content>.list>li");
+        var clist = document.querySelector("#content>.list");
+        let home2liNodes = document.querySelectorAll(
+          "#content .list .home .home2 > li"
+        );
+        let home1liNodes = document.querySelectorAll(
+          "#content .list .home .home1 > li"
+        );
+        let home1 = document.querySelector("#content .list .home .home1");
+
+        let aboutUls = document.querySelectorAll(
+          "#content > .list > .about .about3>.item > ul"
+        );
+        let dotLiNodes = document.querySelectorAll("#content > .dot > li");
+        let team3LiNodes = document.querySelectorAll(
+          "#content > .list > .team .team3>li"
+        );
+        let team3 = document.querySelector("#content > .list > .team .team3");
+        let teamS = document.querySelector("#content > .list > .team >section");
+        let canvas = document.querySelector(
+          "#content > .list > .team >section>canvas"
+        );
+        var now = 0;
+        let timeId;
+
+        // 处理头部
+        headBind();
+        function headBind() {
+          // 设置箭头位置
+          arrowEle.style.left =
+            firstLiNode.offsetLeft +
+            firstLiNode.offsetWidth / 2 -
+            arrowEle.offsetWidth / 2 +
+            "px";
+
+          // 第一个li默认显示up,所以页面初加载时会有一个过渡的效果的展示
+          firstUpNode.style.width = "100%";
+
+          // 点击每一个nav，箭头就移动到对应li的正下方，并且该li的up展示
+          for (let i = 0; i < liNodes.length; i++) {
+            liNodes[i].onclick = function (event) {
+              move(i);
+            };
+          }
+          for (let i = 0; i < dotLiNodes.length; i++) {
+            dotLiNodes[i].onclick = function (event) {
+              move(i);
+            };
+          }
+        }
+
+        //   这里面的功能后需要还可以用到，所以提取为一个单独的函数
+        function move(i) {
+          // 将所有的up均隐藏
+          for (let j = 0; j < upNodes.length; j++) {
+            // special One
+            // 这里如果设置为0则会为其绑定内联样式，导致css无法对其产生修改
+            // 设置为""则不会为其添加内联样式
+            upNodes[j].style.width = "";
+          }
+          // 将当前点击的li对应的up展示
+          upNodes[i].style.width = "100%";
+          // 修改箭头的位置
+          arrowEle.style.left =
+            liNodes[i].offsetLeft +
+            liNodes[i].offsetWidth / 2 -
+            arrowEle.offsetWidth / 2 +
+            "px";
+          // 点击切换内容区的块
+          clist.style.top =
+            -i * (document.documentElement.clientHeight - head.offsetHeight) +
+            "px";
+
+          // 将其他的dot li上的active去掉
+          for (let i = 0; i < dotLiNodes.length; i++) {
+            dotLiNodes[i].classList.remove("active");
+          }
+          dotLiNodes[i].classList.add("active");
+
+          now = i;
+        }
+
+        // 内容区的交互
+        contentBind();
+        function contentBind() {
+          // 动态指定内容区的高度
+          content.style.height =
+            document.documentElement.clientHeight - head.offsetHeight + "px";
+          //   console.log(cliNodes);
+          for (let i = 0; i < cliNodes.length; i++) {
+            cliNodes[i].style.height =
+              document.documentElement.clientHeight - head.offsetHeight + "px";
+          }
+        }
+
+        // 每次缩放，头部的高度会发生变化，所以需要调整内容区的宽度
+        window.onresize = function () {
+          // 调整每一屏的高度
+          contentBind();
+          // 每一屏的偏移量需要重新调整
+          clist.style.top =
+            -now * (document.documentElement.clientHeight - head.offsetHeight) +
+            "px";
+        };
+
+        // 滚轮切换内容区
+        if (content.addEventListener) {
+          content.addEventListener("DOMMouseScroll", function (e) {
+            e = e || event;
+            // 防抖动
+            if (timeId) {
+              clearTimeout(timeId);
+            }
+            // 只有最近一次的滑动会被执行
+            timeId = setTimeout(function () {
+              fn(e);
+            }, 200);
+          });
+        }
+        content.onmousewheel = function (e) {
+          e = e || event;
+          // 防抖动
+          if (timeId) {
+            clearTimeout(timeId);
+          }
+          // 只有最近一次的滑动会被执行
+          timeId = setTimeout(function () {
+            fn(e);
+          }, 200);
+        };
+
+        function fn(e) {
+          let direction = "";
+          e = e || event;
+          if (e.wheelDelta) {
+            direction = e.wheelDelta > 0 ? "up" : "down";
+          } else if (e.detail) {
+            direction = e.detail < 0 ? "up" : "down";
+          }
+          switch (direction) {
+            case "up":
+              if (now > 0) {
+                now--;
+                move(now);
+              }
+
+              break;
+            case "down":
+              if (now < cliNodes.length - 1) {
+                now++;
+                move(now);
+              }
+              break;
+          }
+          // 多次不松手滑动鼠标滚轮只响应一次 防抖节流
+        }
+
+        // 第一屏的交互
+        let oldIndex = 0; // 手动轮播的前一个索引
+        let time3D = 0;
+        // 自动轮播的索引
+        let autoIndex = 0;
+        home3D();
+        function home3D() {
+          for (let i = 0; i < home2liNodes.length; i++) {
+            home2liNodes[i].onclick = function () {
+              // 手动点击轮播的时候停止自动轮播
+              // clearInterval(time3D);
+              // console.log(11);
+              // 注意这里用了classList兼容性不高，可以使用自己定义的方法
+              for (let i = 0; i < home2liNodes.length; i++) {
+                home2liNodes[i].classList.remove("active");
+              }
+              home2liNodes[i].classList.add("active");
+              // 分清楚从左往右还是从右往左
+              // 比较当前索引和前一个索引：
+              // 当前索引大于前一个索引：从左往右
+              if (i > oldIndex) {
+                // 在为当前索引添加一个类的同时，需要先去除当前索引的其它类
+                home1liNodes[i].classList.remove("leftHide");
+                home1liNodes[i].classList.remove("leftShow");
+                home1liNodes[i].classList.remove("rightHide");
+                home1liNodes[i].classList.add("rightShow");
+
+                //
+                home1liNodes[oldIndex].classList.remove("leftShow");
+                home1liNodes[oldIndex].classList.remove("rightShow");
+                home1liNodes[oldIndex].classList.remove("rightHide");
+                home1liNodes[oldIndex].classList.add("leftHide");
+              }
+              if (i < oldIndex) {
+                // 当前索引小于前一个索引，从右往左
+                home1liNodes[i].classList.remove("leftHide");
+                home1liNodes[i].classList.remove("rightHide");
+                home1liNodes[i].classList.remove("rightShow");
+                home1liNodes[i].classList.add("leftShow");
+
+                //
+                home1liNodes[oldIndex].classList.remove("leftHide");
+                home1liNodes[oldIndex].classList.remove("rightShow");
+                home1liNodes[oldIndex].classList.remove("leftShow");
+                home1liNodes[oldIndex].classList.add("rightHide");
+              }
+
+              // 记录当前索引
+              oldIndex = i;
+              // 手动轮播同步自动轮播
+              autoIndex = oldIndex;
+            };
+          }
+
+          autoMove();
+          // 自动轮播
+          function autoMove() {
+            time3D = setInterval(function () {
+              // 自动轮播 从左向右
+              autoIndex++;
+              if (autoIndex === home2liNodes.length) {
+                autoIndex = 0;
+              }
+              // 小圆点同步
+              // 注意这里用了classList兼容性不高，可以使用自己定义的方法
+              for (let i = 0; i < home2liNodes.length; i++) {
+                home2liNodes[i].classList.remove("active");
+              }
+              home2liNodes[autoIndex].classList.add("active");
+
+              // 轮播图同步
+              // 在为当前索引添加一个类的同时，需要先去除当前索引的其它类
+              home1liNodes[autoIndex].classList.remove("leftHide");
+              home1liNodes[autoIndex].classList.remove("leftShow");
+              home1liNodes[autoIndex].classList.remove("rightHide");
+              home1liNodes[autoIndex].classList.add("rightShow");
+
+              //
+              home1liNodes[oldIndex].classList.remove("leftShow");
+              home1liNodes[oldIndex].classList.remove("rightShow");
+              home1liNodes[oldIndex].classList.remove("rightHide");
+              home1liNodes[oldIndex].classList.add("leftHide");
+              // !!!!!   自动轮播去同步手动轮播
+              oldIndex = autoIndex;
+            }, 3000);
+          }
+          home1.onmouseenter = function () {
+            // console.log(11);
+            clearInterval(time3D);
+          };
+          home1.onmouseleave = function () {
+            // 离开后，重新开启定时器
+            autoMove();
+          };
+        }
+
+        // 第四屏图片炸裂
+        picBoom();
+        function picBoom() {
+          for (let i = 0; i < aboutUls.length; i++) {
+            change(aboutUls[i]);
+          }
+
+          //
+          function change(ul) {
+            let w = ul.offsetWidth / 2;
+            let h = ul.offsetHeight / 2;
+            let src = ul.dataset.src;
+            for (let i = 0; i < 4; i++) {
+              let liNode = document.createElement("li");
+              let imgNode = document.createElement("img");
+
+              liNode.style.width = w + "px";
+              liNode.style.height = h + "px";
+              imgNode.src = src;
+              // 1.left:0,top:0
+              // 2:left:-width top:0
+              // 3.left:0  top:-height
+              // 4 left:-width  top:-height
+              imgNode.style.left = -1 * (i % 2) * w + "px";
+              imgNode.style.top = (i < 2 ? 0 : -1) * h + "px";
+              liNode.appendChild(imgNode);
+              ul.appendChild(liNode);
+            }
+            let imgNodes = ul.querySelectorAll("li>img");
+            ul.onmouseenter = function () {
+              // 1.left:0,top:height
+              // 2:left:-2*width top:0
+              // 3.left:width  top:-height
+              // 4 left:-width  top:-2*height
+
+              imgNodes[0].style.top = h + "px";
+              imgNodes[1].style.left = -2 * w + "px";
+              imgNodes[2].style.left = w + "px";
+              imgNodes[3].style.top = -2 * h + "px";
+            };
+            ul.onmouseleave = function () {
+              imgNodes[0].style.top = 0 + "px";
+              imgNodes[1].style.left = -1 * w + "px";
+              imgNodes[2].style.left = 0 + "px";
+              imgNodes[3].style.top = -1 * h + "px";
+            };
+          }
+        }
+
+        // 第五屏
+        var oc = null; // canvas画布
+        createBubble();
+        function createBubble() {
+          // 保存产生运动气泡时的延时器
+          let timer1, timer2;
+          for (let i = 0; i < team3LiNodes.length; i++) {
+            team3LiNodes[i].onmouseenter = function (e) {
+              e = e || event;
+              for (let i = 0; i < team3LiNodes.length; i++) {
+                team3LiNodes[i].style.opacity = "0.5";
+              }
+              team3LiNodes[i].style.opacity = "1";
+              addCanvas();
+              oc.style.left =
+                this.getBoundingClientRect().left -
+                teamS.getBoundingClientRect().left +
+                "px";
+              bubble();
+            };
+          }
+
+          function addCanvas() {
+            if (!oc) {
+              oc = document.createElement("canvas");
+              teamS.appendChild(oc);
+              oc.width = team3LiNodes[0].offsetWidth;
+              oc.height = (team3LiNodes[0].offsetHeight * 2) / 3;
+              // oc.style.backgroundColor = "red";
+
+              // 当鼠标从ul中出去时，将所有的opacity恢复为1
+              // 鼠标移入li,触发enter事件，产生canvas,canvas覆盖了li,使得鼠标离开了li，触发了leave事件，将所有的opacity全部设置为了1
+              oc.onmouseleave = function () {
+                for (let i = 0; i < team3LiNodes.length; i++) {
+                  team3LiNodes[i].style.opacity = "1";
+                }
+                removeCanvas();
+                // 注意这里不能用函数进行，因为会产生闭包
+                // 因为这个函数中调用了外部函数中的变量oc,所以在removeCanvas中产生了闭包，在该函数中清除只会清除掉闭包中的oc
+                // 全局变量中的oc不会受到影响
+                // oc.remove();
+                // oc = null;
+                // clearInterval(timer1);
+                // clearInterval(timer2);
+                // console.log("我清除了", oc);
+              };
+            }
+          }
+          function removeCanvas() {
+            oc.remove();
+            oc = null;
+            clearInterval(timer1);
+            clearInterval(timer2);
+          }
+
+          function bubble() {
+            if (oc.getContext) {
+              var ctx = oc.getContext("2d");
+
+              // 保存圆的信息
+              var arr = [];
+              timer1 = setInterval(function () {
+                // console.log(arr);
+                var x = Math.random() * oc.width; // 圆心
+                var r = Math.random() * 6 + 2;
+                var y = oc.height - r; // 圆的半径
+                var red = Math.random() * 255; // 控制圆的颜色
+                var green = Math.random() * 255;
+                var blue = Math.random() * 255;
+                var alpa = 1; // 控制圆的透明度
+
+                var deg = 0; //控制sin函数的角度变化，即圆的高度移动
+                var startX = x; // 控制圆的运动圆心位置
+                var startY = y;
+                var step = Math.random() * 10 + 10; // 控制曲线的运动形式
+                arr.push({
+                  x,
+                  y,
+                  r,
+                  red,
+                  green,
+                  blue,
+                  alpa,
+                  deg,
+                  startX,
+                  startY,
+                  step,
+                });
+              }, 50); // 每50ms就产生一个随机圆
+
+              // 每60s检测一次，
+              timer2 = setInterval(function () {
+                //   清除上一次的画布
+                ctx.clearRect(0, 0, oc.width, oc.height);
+
+                // 添加圆的曲线运动
+                for (let i = 0; i < arr.length; i++) {
+                  arr[i].deg += 10; // 增大度数的变化速度
+                  // 控制圆心的运动位置
+                  arr[i].x =
+                    arr[i].startX +
+                    Math.sin((arr[i].deg * Math.PI) / 180) * arr[i].step * 2;
+
+                  // 这里要减：这样气泡才会往上跑
+                  arr[i].y =
+                    arr[i].startY -
+                    ((arr[i].deg * Math.PI) / 180) * arr[i].step;
+
+                  // 如果气泡到了距离顶部50处，则从数组中清除掉，控制arr中元素的数量
+                  if (arr[i].y <= 50) {
+                    arr.splice(i, 1);
+                  }
+                }
+
+                //   将数组中的圆绘制到画布上
+                arr.forEach((item) => {
+                  // console.log("我在画呢");
+                  // 画圆
+                  ctx.save();
+                  ctx.fillStyle = `rgba(${item.red}, ${item.green}, ${item.blue}, ${item.alpa})`;
+                  ctx.beginPath();
+                  ctx.arc(item.x, item.y, item.r, 0, (360 * Math.PI) / 180);
+                  ctx.fill();
+                  ctx.restore();
+                });
+              }, 1000 / 60); // 每1000/60ms就画一次圆
+            }
+          }
+        }
+      };
+    </script>
+  </body>
+</html>

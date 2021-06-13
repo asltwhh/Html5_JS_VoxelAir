@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <section id="wrap">
+      <!-- 流体布局 -->
+      <header id="head">
+        <!-- 固定布局 -->
+        <div class="headerMain">
+          <!-- 搜索引擎会扒这个logo -->
+          <h1 class="logo">
+            <a href="">
+              <img src="./img/logo.png" alt="logo" />
+            </a>
+          </h1>
+          <!-- 导航栏 -->
+          <nav class="nav">
+            <!-- 内部的li均浮动了，所以需要添加clearfix,避免高度塌陷 -->
+            <ul class="list clearfix">
+              <li>
+                <a href="javascript:;">
+                  <div class="up">
+                    <img src="./img/home_gruen.png" alt="" />
+                  </div>
+                  <div class="down"><img src="./img/home.png" alt="" /></div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <div class="up">Course</div>
+                  <div class="down">Course</div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <div class="up">Works</div>
+                  <div class="down">Works</div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <div class="up">About</div>
+                  <div class="down">About</div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <div class="up">Team</div>
+                  <div class="down">Team</div>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- 箭头 -->
+          <div class="arrow"></div>
+        </div>
+      </header>
+    </section>
+    <script type="text/javascript">
+      window.onload = function () {
+        // 获取dom元素
+        var arrowEle = document.querySelector("#head .headerMain .arrow");
+        var liNodes = document.querySelectorAll(
+          "#head .headerMain .nav .list li"
+        );
+        var upNodes = document.querySelectorAll(
+          "#head .headerMain .nav .list li .up"
+        );
+        var firstLiNode = liNodes[0];
+
+        // 设置箭头位置
+        arrowEle.style.left =
+          firstLiNode.offsetLeft +
+          firstLiNode.offsetWidth / 2 -
+          arrowEle.offsetWidth / 2 +
+          "px";
+
+        // 第一个li默认显示up,所以页面初加载时会有一个过渡的效果的展示
+        var firstUpNode = firstLiNode.querySelector(".up");
+        firstUpNode.style.width = "100%";
+
+        // 点击每一个li，箭头就移动到对应li的正下方，并且该li的up展示
+        for (let i = 0; i < liNodes.length; i++) {
+          liNodes[i].onclick = function (event) {
+            // 将所有的up均隐藏
+            for (let j = 0; j < upNodes.length; j++) {
+              // special One
+              // 这里如果设置为0则会为其绑定内联样式，导致css无法对其产生修改
+              // 设置为""则不会为其添加内联样式
+              upNodes[j].style.width = "";
+            }
+            // 将当前点击的li对应的up展示
+            upNodes[i].style.width = "100%";
+            // 修改箭头的位置
+            arrowEle.style.left =
+              liNodes[i].offsetLeft +
+              liNodes[i].offsetWidth / 2 -
+              arrowEle.offsetWidth / 2 +
+              "px";
+          };
+        }
+      };
+    </script>
+  </body>
+</html>

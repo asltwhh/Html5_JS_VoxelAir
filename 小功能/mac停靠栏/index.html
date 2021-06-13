@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mac停靠栏</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      /* 清除默认的滚动条 */
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+      #wrap {
+        /* 水平居中 */
+        position: absolute; /*元素不再默认占据100%*/
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        text-align: center;
+      }
+      #wrap img {
+        width: 64px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <img src="./images/1.png" alt="" />
+      <img src="./images/2.png" alt="" />
+      <img src="./images/3.png" alt="" />
+      <img src="./images/4.png" alt="" />
+      <img src="./images/5.png" alt="" />
+    </div>
+    <script>
+      window.onload = function () {
+        var imgs = document.querySelectorAll("#wrap img");
+        // 确定变化的半径
+        var r = 320;
+        document.onmousemove = function (e) {
+          e = e || event;
+          for (var i = 0; i < imgs.length; i++) {
+            let a =
+              imgs[i].getBoundingClientRect().left +
+              imgs[i].offsetWidth / 2 -
+              e.clientX;
+            let b =
+              imgs[i].getBoundingClientRect().top +
+              imgs[i].offsetHeight / 2 -
+              e.clientY;
+            let c = Math.sqrt(a * a + b * b);
+            if (c >= r) {
+              // 控制图片的宽度增大
+              c = r;
+            }
+            // 图片原本的尺寸是128px,  0.2的确定：主要保证页面初始化后，图片的尺寸依旧为64px
+            // 随着鼠标的靠近，元素尺寸逐渐变大为128px
+            imgs[i].style.width = 128 - c * 0.2 + "px";
+          }
+        };
+      };
+    </script>
+  </body>
+</html>

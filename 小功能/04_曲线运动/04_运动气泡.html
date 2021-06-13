@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: pink;
+      }
+      canvas {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas width="150px" height="400px"></canvas>
+    <script>
+      window.onload = function () {
+        var oc = document.querySelector("canvas");
+        if (oc.getContext) {
+          var ctx = oc.getContext("2d");
+
+          // 保存圆的信息
+          var arr = [];
+          setInterval(function () {
+            console.log(arr);
+            var x = Math.random() * oc.width; // 圆心
+            var r = Math.random() * 6 + 2;
+            var y = oc.height - r; // 圆的半径
+            var red = Math.random() * 255; // 控制圆的颜色
+            var green = Math.random() * 255;
+            var blue = Math.random() * 255;
+            var alpa = 1; // 控制圆的透明度
+
+            var deg = 0; //控制sin函数的角度变化，即圆的高度移动
+            var startX = x; // 控制圆的运动圆心位置
+            var startY = y;
+            var step = Math.random() * 10 + 10; // 控制曲线的运动形式
+            arr.push({
+              x,
+              y,
+              r,
+              red,
+              green,
+              blue,
+              alpa,
+              deg,
+              startX,
+              startY,
+              step,
+            });
+          }, 50); // 每50ms就产生一个随机圆
+
+          // 每60s检测一次，
+          setInterval(function () {
+            //   清除上一次的画布
+            ctx.clearRect(0, 0, oc.width, oc.height);
+
+            // 添加圆的曲线运动
+            for (let i = 0; i < arr.length; i++) {
+              arr[i].deg += 8; // 增大度数的变化速度
+              // 控制圆心的运动位置
+              arr[i].x =
+                arr[i].startX +
+                Math.sin((arr[i].deg * Math.PI) / 180) * arr[i].step * 2;
+
+              // 这里要减：这样气泡才会往上跑
+              arr[i].y =
+                arr[i].startY - ((arr[i].deg * Math.PI) / 180) * arr[i].step;
+
+              // 如果气泡到了距离顶部50处，则从数组中清除掉，控制arr中元素的数量
+              if (arr[i].y <= 50) {
+                arr.splice(i, 1);
+              }
+            }
+
+            //   将数组中的圆绘制到画布上
+            arr.forEach((item) => {
+              // 画圆
+              ctx.save();
+              ctx.fillStyle = `rgba(${item.red}, ${item.green}, ${item.blue}, ${item.alpa})`;
+              ctx.beginPath();
+              ctx.arc(item.x, item.y, item.r, 0, (360 * Math.PI) / 180);
+              ctx.fill();
+              ctx.restore();
+            });
+          }, 1000 / 60); // 每1000/60ms就画一次圆
+        }
+      };
+    </script>
+  </body>
+</html>
