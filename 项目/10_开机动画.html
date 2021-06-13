@@ -919,7 +919,6 @@
             var img = new Image();
             img.src = "img/" + arr[i];
             img.onload = function () {
-              console.log(flag);
               flag++;
               line.style.width = (flag / arr.length) * 100 + "%";
             };
