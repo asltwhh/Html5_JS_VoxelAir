@@ -934,6 +934,7 @@
           // 在任意一个area[i]的动画结束的时候，删除mask结构
           areas[0].addEventListener("transitionend", function () {
             mask.remove();
+			audio.play();
           });
         }
       };
