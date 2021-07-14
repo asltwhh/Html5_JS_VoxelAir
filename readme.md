@@ -4,7 +4,7 @@
 1 小功能
 
 ### 1.1 元素位置API
-1. 删除某些节点时，假删除：node.display = 'none'; 一半后台也不会将数据真的删除，只是会添加一个标志位，表明该数据被删除了
+1. 删除某些节点时，假删除：node.display = 'none'; 一般后台也不会将数据真的删除，只是会添加一个标志位，表明该数据被删除了
 
 2. parentNode: 指的是节点的直接父元素，与是否开启定位没有关系，和css中的包含块无关
 
@@ -164,7 +164,7 @@
 5. clientHeight&clientWidth    offsetHeight& offsetWidth
 
    1. clientHeight&clientWidth
-      1. 获取的是元素的可视区域(padding box)的高度和宽度,即拿到的是padding+width、padding+top
+      1. 获取的是元素的可视区域(padding box)的高度和宽度,即拿到的是padding+width、padding+height
    2. offsetHeight& offsetWidth
       1. 获取的是：border box ,即拿到的是border+width+padding
 
@@ -181,6 +181,26 @@
    2. 注意：在ie10及ie10以下，根标签的clientWidth和offsetWidth统一被指定为视口的宽度，即均可以用于获取视口的宽度
 
    3. 所以无论什么浏览器，直接使用1.中的方法获取视口尺寸即可
+
+#### scrollHeight,scrollWidth   
+
+https://blog.csdn.net/nic7968/article/details/7217823
+
+情况1：自身有宽高，有padding
+
+1. IE 6和IE 7: 左内边距 + 右内边距  不加宽高
+
+2. 其他浏览器：左内边距 + 自身宽高 + 右内边距
+
+情况2：没有滚动条，有内容
+
+1. 所有浏览器：scrollWidth = 左内边距 + 内容宽度 + 右内边距
+
+情况3：有滚动条，有内容
+
+1. IE 6和IE 7:  scrollWidth = 左内边距 + 内容宽度 + 右内边距
+
+2. 其他浏览器：scrollWidth = 左内边距 + 内容宽度
 
 #### 1.1.1 mac停靠栏
 
@@ -354,7 +374,8 @@
 原理：
 
 1. 元素的left属性设置为sin曲线的角度变化，每60ms增加一次角度，元素的top属性设置为sin曲线的y轴变化
-2. 每一次left和top变化，都产生一个新的元素，将left和top设置为该值。（提前定义好样式，使用类样式直接添加)
+2. 每一次left和top变化，都产生一个新的元素（不用清除画布，保留之前画的点，实质上就是很多点连接起来的），将left和top设置为该值。（提前定义好样式，使用类样式直接添加)
+3. 实际上用canvas做更方便，之前lineTo()对应的left和top值即可
 
 ```
 <!DOCTYPE html>
@@ -415,6 +436,26 @@
 	</script>
 </html>
 
+使用canvas实现：
+<script>
+      window.onload = function () {
+        var canvas = document.getElementById("test");
+        let deg = 0;
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+          ctx.translate(0, 150);
+          step = 100;
+          setInterval(function () {
+            deg++;
+            ctx.lineTo(
+              (((deg * Math.PI) / 180) * step) / 5,
+              Math.sin((deg * Math.PI) / 180) * step
+            );
+            ctx.stroke();
+          }, 1000 / 60);
+        }
+      };
+    </script>
 ```
 
 #### 1.3.2 气泡1
@@ -693,7 +734,7 @@
 
 2. headerMain中包含三个部分：logo,nav和narrow(小箭头)，logo左浮动，nav右浮动，小箭头需要绝对定位。很明显，logo左浮动，nav右浮动。nav中li需要左浮动或者inline-block,**注意：inline-block元素之间会存在空隙，这是由于字体大小+html中的空格导致的**，所以这里用左浮动最好。
 
-3. 鼠标悬浮在每一个li上时，都会存在一个过渡效果，其实是每一个li中包含两个div块：up和down，两者的字体颜色不同，过渡效果其实就是先隐藏其中一个，hover时再展示，添加一个transition时间。up开启了绝对定位，down就会覆盖住up,只显示down。将up的宽度置为0，overflow:hidden,添加过渡效果。当鼠标悬浮在li上时，再设置其width:100%,从而展示出up,出现过渡效果。
+3. 鼠标悬浮在每一个li上时，都会存在一个过渡效果，其实是每一个li中包含两个div块：up和down，两者的字体颜色不同，过渡效果其实就是先隐藏其中一个，hover时再展示，添加一个transition时间。up开启了绝对定位，down就会移动到up的下方。为了只显示down，将up的宽度置为0，overflow:hidden。这样在首屏加载的时候，就会先显示down。当鼠标悬浮时，就为up添加过渡效果。当鼠标悬浮在li上时，再设置其width:100%,从而展示出up,出现过渡效果。
 
    **注意：用宽度做动画存在局限性，但也可以修改。**这里使用宽度作为过渡效果，则当鼠标悬浮时，一定是从左向右变化的，鼠标离开后一定是从右往左变化的，因为宽度的增加和减小是以左侧为基准的。同理高度增加就可以实现从上到下变化的效果。如果要实现悬浮时从右向左、从下到上的变化则需要修改参考点，则可以考虑：
 
@@ -710,9 +751,57 @@
 
 4. 箭头的位置：箭头是相对于headerMain定位的，在css中为其设置初始的left为50%，然后需要通过js调整其left，使其位于对应li的正下方。
 
-5. 另外，第一个li默认up是展示的，所以需要在js中设置它的up的宽度是100%的。
+   ```
+   // 获取dom元素
+   var arrowEle = document.querySelector("#head .headMain .arrow");
+   var liNodes = document.querySelectorAll(
+     "#head .headMain .nav .list li"
+   );
+   var upNodes = document.querySelectorAll(
+     "#head .headMain .nav .list li .up"
+   );
+   var firstLiNode = liNodes[0];
+   
+   // 设置箭头位置
+   arrowEle.style.left =
+     firstLiNode.offsetLeft +
+     firstLiNode.offsetWidth / 2 -
+     arrowEle.offsetWidth / 2 +
+     "px";
+   ```
+
+5. 另外，第一个li默认up是展示的，所以需要在js中设置它的up的宽度是100%的。**注意：这个样式是通过js直接设置的，所以后面如果需要修改，则也需要通过js才能修改，通过css的样式是不能达到修改的效果**
+
+   ```
+   // 第一个li默认显示up,所以页面初加载时会有一个过渡的效果的展示
+   var firstUpNode = firstLiNode.querySelector(".up");
+   firstUpNode.style.width = "100%";
+   ```
 
 6. 点击每一个li时，展示对应的up,其余up隐藏。这里存在一个问题：**需要在js中修改元素的样式，这会产生内联样式，内联样式的优先级高于css样式，所以一旦在这里将样式写死，则会导致后面css中样式的修改不起作用，所以一般将样式设置为空值"",这样不会产生内联样式。**另外，点击li，小箭头会自动跳转到该li的正下方，需要修改小箭头的位置。
+
+   ```
+   // 点击每一个li，箭头就移动到对应li的正下方，并且该li的up展示
+   for (let i = 0; i < liNodes.length; i++) {
+     liNodes[i].onclick = function (event) {
+       // 将所有的up均隐藏
+       for (let j = 0; j < upNodes.length; j++) {
+         // special One
+         // 这里如果设置为0则会为其绑定内联样式，导致css无法对其产生修改
+         // 设置为""则不会为其添加内联样式
+         upNodes[j].style.width = "";
+       }
+       // 将当前点击的li对应的up展示
+       upNodes[i].style.width = "100%";
+       // 修改箭头的位置
+       arrowEle.style.left =
+         liNodes[i].offsetLeft +
+         liNodes[i].offsetWidth / 2 -
+         arrowEle.offsetWidth / 2 +
+         "px";
+     };
+   }
+   ```
 
 ### 2.2 内容区
 
@@ -733,16 +822,78 @@
    
    4. background的背景偏移百分比的参照关系：参照于背景区域的尺寸—>背景图的尺寸
       1. 百分比就是去计算背景图片的偏移量的
+      
+   5. ![](./img/16.png)
    
 2. 交互
    
    1. 内容区过渡：多个li是竖着放置在list中的，每次点击某个nav,实际上是通过修改ul的top值实现的，每次点击某个nav,则对应将ul的top值修改为对应的值。因为每个li的高度，也就是content的高度是由js控制的，所以每次上移的高度也由js控制。比如，在刚初始化时，top应该为0，点击第i个nav时，top的值等于-i*(视口高度-head高度)。 在css样式中需要为top属性设置过渡效果。
+   
    2. 调整分辨率时：
       1. 视口只能出现一屏，需要通过resize重新调整；
       2. 每一屏的偏移量需要重新调整。否则每次点击到某一屏，再进行缩放，则会出现多屏的情况，因为此时页面中的像素变小变多了，和缩放之前的像素不同。需要在resize中调整
+   
    3. 滚轮实现内容区切换
       1. 首先需要考虑滚轮事件的兼容性：**onmousewheel**、DOMMouseScroll、wheelDelta、detail
+   
       2. 考虑当多次滑动滚轮时，会触发多次回调，则可以通过防抖处理
+   
+         ```
+         let timeId;
+         var now = 0;   //当前屏的索引
+         
+         // 滚轮切换内容区
+         if (content.addEventListener) {
+           content.addEventListener("DOMMouseScroll", function (e) {
+             e = e || event;
+             // 防抖动
+             if (timeId) {
+               clearTimeout(timeId);
+             }
+             // 只有最近一次的滑动会被执行
+             timeId = setTimeout(function () {
+               fn(e);
+             }, 200);
+           });
+         }
+         content.onmousewheel = function (e) {
+           e = e || event;
+           // 防抖动
+           if (timeId) {
+             clearTimeout(timeId);
+           }
+           // 只有最近一次的滑动会被执行
+           timeId = setTimeout(function () {
+             fn(e);
+           }, 200);
+         };
+         function fn(e) {
+           let direction = "";
+           e = e || event;
+           if (e.wheelDelta) {
+             direction = e.wheelDelta > 0 ? "up" : "down";
+           } else if (e.detail) {
+             direction = e.detail < 0 ? "up" : "down";
+           }
+           switch (direction) {
+             case "up":
+               if (now > 0) {
+                 now--;
+                 move(now);
+               }
+         
+               break;
+             case "down":
+               if (now < cliNodes.length - 1) {
+                 now++;
+                 move(now);
+               }
+               break;
+           }
+           // 多次不松手滑动鼠标滚轮只响应一次 防抖节流
+         }
+         ```
+   
    4. move函数的抽取
 
 ### 2.3 第三屏
@@ -1993,6 +2144,6 @@
 ### 2.12 鼠标事件的冒泡
 
 1. onmouseenter onmouseleave事件不存在事件的冒泡
-2. mouseover,mouseout会产生冒泡，冒泡：执行子事件->执行父元素相同事件->执行祖父元素相同事件
+2. mouseover,mouseout会产生冒泡，冒泡：执行子事件->执行父元素相同事件->执行祖父元素相同事件。元素在其子元素上时，也会冒泡执行。
 3. 元素层级很多的时候，不要用mouseover,mouseout
 
